@@ -7,55 +7,72 @@
 <body>
 	<header></header>
 	<main>
-		<div class="wrapper" id="mainxx"></div>
+		<div class="wrapper" id="main"></div>
 	</main>
 	<footer></footer>
 	<script>
 		var keys = {
-			'0': {0:'q',1:'w',2:'e',3:'r',4:'t',5:'y',6:'u',7:'i',8:'o',9:'p',length:10},
-			'1': {0:'a',1:'s',2:'d',3:'f',4:'g',5:'h',6:'j',7:'k',8:'l',length:9},
-			'2': {0:'z',1:'x',2:'c',3:'v',4:'b',5:'n',6:'m',length:7},
-			'length': 3
+			'0': {0:'1',1:'2',2:'3',3:'4',4:'5',5:'6',6:'7',7:'8',8:'9',9:'0',length:10},
+			'1': {0:'q',1:'w',2:'e',3:'r',4:'t',5:'y',6:'u',7:'i',8:'o',9:'p',length:10},
+			'2': {0:'a',1:'s',2:'d',3:'f',4:'g',5:'h',6:'j',7:'k',8:'l',length:9},
+			'3': {0:'z',1:'x',2:'c',3:'v',4:'b',5:'n',6:'m',length:7},
+			'length': 4
 		}
 		var hash = {
+			'2': '163.com',
+			'8': '10086.cn',
+			'9': '4399.com',			
 			'q': 'qq.com',
 			'w': 'weibo.com',
-			'e': 'ele.com',
-			'r': 'renren.com'
+			't': 'taobao.com',
+			'i': 'iqiyi.com',
+			'd': 'douban.com',
+			'a': 'amazon.cn',
+			'g': 'ganji.com',
+			'x': 'xunlei.com',
+			'm': 'meituan.com'
 		}
 		var hashInlocalStorage = JSON.parse(localStorage.getItem('zzz')|| 'null')
-		if(hashInlocalStorage){
-			hash = hashInlocalStorage
-		}
+		//if(hashInlocalStorage){
+		// 	hash = hashInlocalStorage
+		//}
 
-		index = 0
+		var index = 0
 		while(index< keys['length']){
-			divxx = document.createElement('div')
-			mainxx.appendChild(divxx)
-			row = keys[index]
-			index2 = 0
+			var div = document.createElement('div')
+			div.className = 'row'
+			main.appendChild(div)
+			var row = keys[index]
+			var index2 = 0
 			while(index2 < row['length']){
-				kbdxx = document.createElement('kbd')				
-				kbdxx.textContent = row[index2]
-				buttonx = document.createElement('button')
-				buttonx.textContent = '编辑'
-				buttonx.id = row[index2]
-				buttonx.onclick =function(dsdsds) {
+				var kbd = document.createElement('kbd')	
+				var span = document.createElement('span')			
+				span.textContent = row[index2]
+				span.className = 'text'
+				kbd.appendChild(span)
+				kbd.className = 'key'
+				var button = document.createElement('button')
+				button.textContent = '编辑'
+				button.id = row[index2]
+				var img = document.createElement('img')
+				img.src = 'http://'+hash[row[index2]] + '/favicon.ico'
+				button.onclick =function(dsdsds) {
 					key = dsdsds['target']['id']
-					x = prompt('输入一个网址')
+					x = prompt('请输入一个网址')
 					hash[key] = x
 					localStorage.setItem('zzz',JSON.stringify(hash))
 				}
-				kbdxx.appendChild(buttonx)
-				divxx.appendChild(kbdxx)
+				kbd.appendChild(img)
+				kbd.appendChild(button)
+				div.appendChild(kbd)
 				index2 = index2 + 1
 			} 
 			index = index+1
 		}
 
 		document.onkeypress = function(dsdsds){
-			key = dsdsds['key']
-			website = hash[key]
+			var key = dsdsds['key']
+			var website = hash[key]
 			console.log(website)
 			//location.href = 'http://' + website
 			window.open('http://' + website,'_blank')

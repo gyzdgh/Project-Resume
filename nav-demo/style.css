@@ -1,6 +1,11 @@
-*{margin: 0; padding: 0;}
+
 a{text-decoration: none;}
-kbd{border:1px solid red;width:4em;height:4em;display:inline-block;text-transform:uppercase;
+kbd{
+    border:1px solid red;
+    width:4em;
+    height:4em;
+    display:inline-block;
+    text-transform:uppercase;
     position: relative;
 }
 kbd > button{
@@ -8,17 +13,62 @@ kbd > button{
     right: 0;
     bottom:0;
     display: none;
+    border-radius: 5px;
 }
 kbd:hover > button{
     display: block;
 }
+body{
+    background:gray url(./wall.jpg) no-repeat center center;
+}
 main{
-    display:block;
+    display:flex;
     text-align: center;
+    justify-content: center;
+    align-items: center;
+    height:100vh;
 }
-#mainxx > div:nth-child(2){
-    margin-left:2em;
+#main > div:nth-child(2){
+    margin-left:90px;
 }
-#mainxx > div:nth-child(3){
-    margin-left:4em;
+#main > div:nth-child(3){
+    margin-left:40px;
+}
+#main > div:nth-child(4){
+    margin-left:-50px;
+}
+.wrapper{
+    background:rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+.key{
+    width:55px;
+    height:45px;
+    background:linear-gradient(to bottom,#292929 0%,#111111 100%);
+    border:1px solid #373737;
+    color:#c5c5c5;
+    border-radius: 6px;
+    box-shadow: 0 0 0 1px #1a1b1c,0 0 0 2px #1f2020,0 3px 0 2px #080808;
+    font-size: 15px;
+    font-family: Verdana;
+    position: relative;
+}
+.row{
+    margin:20px; 
+}
+.row .key{
+    margin:0 10px;
+}
+.key img{
+    width:17px;
+    height:17px;
+    position: absolute;
+    left:5px;
+    bottom:5px;
+    border-radius: 10px;
+}
+.text{
+    position: absolute;
+    top:2px;
+    left:5px;
 }
