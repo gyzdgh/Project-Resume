@@ -1,21 +1,68 @@
 var behavior = document.getElementById('sket');
 var context = behavior.getContext('2d');
-
+var lineWidth = 5
 autoSetCanvasSize(behavior)
 
 listenToUser(behavior)
 
 
 var eraserEnabled = false
-eraser.onclick = function() {
-    eraserEnabled =true
-    actions.className = 'actions x'
-
-}
-brush.onclick = function(){
-    eraserEnabled = false
-    actions.className = 'actions'
-}
+    pen.onclick = function(){
+        eraserEnabled = false
+        pen.classList.add('active')
+        eraser.classList.remove('active')
+    }
+        
+    eraser.onclick = function(){
+        eraserEnabled = true
+        eraser.classList.add('active')
+        pen.classList.remove('active')
+    }
+    clear.onclick = function(){
+        context.clearRect(0, 0, behavior.width, behavior.height); 
+    }
+    black.onclick = function(){
+        context.fillStyle = 'black'
+        context.strokeStyle = 'black'
+        black.classList.add('active')
+        red.classList.remove('active')
+        blue.classList.remove('active')
+        green.classList.remove('active')
+    }
+    red.onclick = function(){
+        context.fillStyle = 'red'
+        context.strokeStyle = 'red'
+        red.classList.add('active')
+        blue.classList.remove('active')
+        green.classList.remove('active')
+        black.classList.remove('active')
+    }   
+    blue.onclick = function() {
+        context.fillStyle = 'blue'
+        context.strokeStyle = 'blue'
+        red.classList.remove('active')
+        blue.classList.add('active')
+        green.classList.remove('active')
+        black.classList.remove('active')
+    }
+    green.onclick = function(){
+        context.fillStyle = 'green'
+        context.strokeStyle = 'green'
+        red.classList.remove('active')
+        blue.classList.remove('active')
+        green.classList.add('active')
+        black.classList.remove('active')
+    }
+    thin.onclick = function(){
+        lineWidth = 5
+        thin.classList.add('active')
+        thick.classList.remove('active')
+    }
+    thick.onclick = function(){
+        lineWidth = 10
+        thin.classList.remove('active')
+        thick.classList.add('active')
+    }
 
 //canvas全屏
 function autoSetCanvasSize(canvas) {
@@ -37,7 +84,6 @@ function setCanvasSize() {
 //画圆
 function drawCircle(x, y, radius) {
     context.beginPath()
-    context.fillStyle = 'black'
     context.arc(x, y, radius, 0, Math.PI * 2);
     context.fill()
 }
@@ -45,9 +91,8 @@ function drawCircle(x, y, radius) {
 //画线
 function drawLine(x1, y1, x2, y2) {
     context.beginPath();
-    context.strokeStyle = 'black'
     context.moveTo(x1, y1) // 起点
-    context.lineWidth = 5
+    context.lineWidth = lineWidth
     context.lineTo(x2, y2) // 终点
     context.stroke()
     context.closePath()
