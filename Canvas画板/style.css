@@ -6,10 +6,15 @@ ol,ul{
 }
 #sket{
     display: block;
+    background:white;
+    position: fixed;
+    top:0;
+    left:0;
   }
   
   body{
     margin: 0px;
+    overflow: hidden;
   }
   .icon {
     width: 1em; height: 1em;
