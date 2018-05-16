@@ -21,6 +21,17 @@ var eraserEnabled = false
     clear.onclick = function(){
         context.clearRect(0, 0, behavior.width, behavior.height); 
     }
+    download.onclick = function(){
+        var url = behavior.toDataURL("image/png")
+        var a = document.createElement('a') 
+        document.body.appendChild(a)
+        a.href = url
+        a.download = '作品'   
+        a.target = '_blank'
+        a.click()
+    }
+
+
     black.onclick = function(){
         context.fillStyle = 'black'
         context.strokeStyle = 'black'
