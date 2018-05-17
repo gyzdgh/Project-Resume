@@ -39,6 +39,8 @@ var eraserEnabled = false
         red.classList.remove('active')
         blue.classList.remove('active')
         green.classList.remove('active')
+        pink.classList.remove('active')
+        purple.classList.remove('active')
     }
     red.onclick = function(){
         context.fillStyle = 'red'
@@ -47,6 +49,8 @@ var eraserEnabled = false
         blue.classList.remove('active')
         green.classList.remove('active')
         black.classList.remove('active')
+        pink.classList.remove('active')
+        purple.classList.remove('active')
     }   
     blue.onclick = function() {
         context.fillStyle = 'blue'
@@ -55,6 +59,8 @@ var eraserEnabled = false
         blue.classList.add('active')
         green.classList.remove('active')
         black.classList.remove('active')
+        pink.classList.remove('active')
+        purple.classList.remove('active')
     }
     green.onclick = function(){
         context.fillStyle = 'green'
@@ -63,6 +69,28 @@ var eraserEnabled = false
         blue.classList.remove('active')
         green.classList.add('active')
         black.classList.remove('active')
+        pink.classList.remove('active')
+        purple.classList.remove('active')
+    }
+    purple.onclick = function(){
+        context.fillStyle = 'purple'
+        context.strokeStyle = 'purple'
+        red.classList.remove('active')
+        blue.classList.remove('active')
+        purple.classList.add('active')
+        black.classList.remove('active')
+        green.classList.remove('active')
+        pink.classList.remove('active')
+    }
+    pink.onclick = function(){
+        context.fillStyle = 'pink'
+        context.strokeStyle = 'pink'
+        red.classList.remove('active')
+        blue.classList.remove('active')
+        pink.classList.add('active')
+        black.classList.remove('active')
+        green.classList.remove('active')
+        purple.classList.remove('active')
     }
     thin.onclick = function(){
         lineWidth = 5
