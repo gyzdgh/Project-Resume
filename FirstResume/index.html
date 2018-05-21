@@ -10,9 +10,6 @@
 	</style>
 </head>
 <body>
-	<div id="siteWelcome" class="site-welcome active">
-		<div class="loading"></div>
-	</div>
 	<div id="topNavBar" class="topNavBar"> 
 		<div class="topNavBar-inner clearfix">
 			<a class="logo" href="#" alt="logo" style="float:left">
@@ -47,7 +44,7 @@
 		<div class="mask"></div>
 	</div>
 	<main>
-		<div id="siteAbout" class="userCard">
+		<div data-x id="siteAbout" class="userCard">
 			<div class="pictureAndText clearfix" style = "margin-top: -350px;">
 				<div class="picture">
 					<img src="./img/avatar.jpg" widtn=299 height=347 alt="头像">
@@ -102,7 +99,7 @@
 			技能：暂学升级中。。。。。。。。
 		</p>
 	</main>
-<section id="siteSkills" class="skills">
+<section data-x id="siteSkills" class="skills">
 	<h2>技能</h2>
 	<ol class="clearfix">
 		<li>
@@ -143,7 +140,7 @@
 		</li>			
 	</ol>
 </section>
-<section id="siteWorks" class="portfolio">
+<section data-x id="siteWorks" class="portfolio">
 	<h2>个人作品集</h2>
 	<nav>
 		<ol>
@@ -180,15 +177,38 @@
 </section>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.2.0/Tween.min.js"></script>
 <script>
-	setTimeout(function(){
-		siteWelcome.classList.remove('active')
-	},1000) //延时显示
-	window.onscroll = function(xxx){
+	//添加offset类
+	let specialTags = document.querySelectorAll('[data-x]')
+	for (let i=0;i<specialTags.length;i++){
+		specialTags[i].classList.add('offset')
+	}
+	findClosest()
+	window.onscroll = function(x){
 		if(window.scrollY > 0){   //窗口下滑
 			topNavBar.classList.add('sticky')
 		}else{
 			topNavBar.classList.remove('sticky') //改变class的名
 		}
+		findClosest()
+	}
+	function findClosest(){
+		let specialTags = document.querySelectorAll('[data-x]')  //获取页面标记的标签
+		let minIndex = 0
+		for (let i=1;i<specialTags.length;i++){
+			if(Math.abs(specialTags[i].offsetTop - window.scrollY) < Math.abs(specialTags[minIndex].offsetTop - window.scrollY)){
+				minIndex = i
+			} 
+		}
+		//minIndex 这里是离窗口最近的元素
+		specialTags[minIndex].classList.remove('offset')
+		let id = specialTags[minIndex].id
+		let a = document.querySelector('a[href="#'+ id +'"]')
+		let li = a . parentNode
+		let brothersAndme = li.parentNode.children
+		for (let i=0;i<brothersAndme.length;i++){
+			brothersAndme[i].classList.remove('highlight')
+		} 
+		li.classList.add('highlight')
 	}
 	let liTags = document.querySelectorAll('nav.menu > ul >li')
 	for(let i=0; i<liTags.length;i++){
@@ -216,16 +236,16 @@
 			let currentTop = window.scrollY  //求出当前的距离
 			let targetTop = top - 80   //目标的top
 			let s = targetTop - currentTop  //总的距离
-			var coords = {y: currentTop};  //当前坐标
+			var coords = {y: currentTop};  //起始位置
 			var t = Math.abs((s/100)*300)  //总的时间
 			if(t>500){ t = 500 }
 			var tween = new TWEEN.Tween(coords)  //初始位置
-			.to({ y:targetTop},t)  //目标位置和时间
-			.easing(TWEEN.Easing.Quadratic.InOut)  //选择变化函数的类型
+			.to({ y:targetTop},t)  // 结束位置 和 时间
+			.easing(TWEEN.Easing.Quadratic.InOut)  //缓动的类型
 			.onUpdate(function(){
-				window.scrollTo(0,coords.y) //页面到的距离
+				window.scrollTo(0,coords.y) //如何更新页面
 			})
-			.start();
+			.start();   //开始缓动
 		} 
 	}
 </script>
