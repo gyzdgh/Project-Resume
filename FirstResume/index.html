@@ -178,6 +178,7 @@
 		</div>
 	</div>
 </section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.2.0/Tween.min.js"></script>
 <script>
 	setTimeout(function(){
 		siteWelcome.classList.remove('active')
@@ -200,6 +201,11 @@
 	}
 
 	let aTags = document.querySelectorAll('nav.menu > ul > li > a')
+	function animate(time){
+		requestAnimationFrame(animate);
+		TWEEN.update(time);   //求帧率
+	}
+	requestAnimationFrame(animate);
 	for(let i=0; i<aTags.length; i++){
 		aTags[i].onclick = function(x){
 			x.preventDefault()  //阻止默认动作
@@ -207,7 +213,19 @@
 			let href = a.getAttribute('href')  //获取a标签上的href
 			let element = document.querySelector(href) //根据代码得到元素
 			let top = element.offsetTop  //得到这个元素上面的距离
-			window.scrollTo(0, top - 75)  //定位这个元素到窗口的距离
+			let currentTop = window.scrollY  //求出当前的距离
+			let targetTop = top - 80   //目标的top
+			let s = targetTop - currentTop  //总的距离
+			var coords = {y: currentTop};  //当前坐标
+			var t = Math.abs((s/100)*300)  //总的时间
+			if(t>500){ t = 500 }
+			var tween = new TWEEN.Tween(coords)  //初始位置
+			.to({ y:targetTop},t)  //目标位置和时间
+			.easing(TWEEN.Easing.Quadratic.InOut)  //选择变化函数的类型
+			.onUpdate(function(){
+				window.scrollTo(0,coords.y) //页面到的距离
+			})
+			.start();
 		} 
 	}
 </script>

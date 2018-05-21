@@ -6,7 +6,7 @@ ul,ol{ list-style: none; }
 h1,h2,h3,h4{ font-weight: normal; }
 .clearfix::after{ content:''; display:block; clear:both; }
 .topNavBar{ padding:20px 0px 20px 0px; position:fixed; top:0; left:0; width:100%; transition:all 0.5s;color:#b7b7b7;}
-.topNavBar.sticky{background:white;padding:10px 0;z-index: 1; box-shadow:0 0 10px rgba(0,0,0,0.25);color:#3d4451;}
+.topNavBar.sticky{background:white;padding:10px 0;z-index: 1; box-shadow:0 6px 20px rgba(0,0,0,0.25);color:#3d4451;}
 .topNavBar-inner{ padding:0px 16px; }
 .topNavBar  nav{ padding-top:5px; }
 .topNavBar nav>ul{ list-style: none; margin:0; padding:0; }
