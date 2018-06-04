@@ -38,7 +38,7 @@ h1,h2,h3,h4{ font-weight: normal; }
 }
 .topNavBar .submenu > li{white-space: nowrap; padding: 5px 20px; cursor: pointer; font-size: 13px;}
 .topNavBar .submenu > li:hover{color:#e6686a;}
-.topNavBar .logo{ font-size:24px; font-family:"Arial Black"; padding-top:3px; padding-bottom:4px; }
+.topNavBar .logo{ font-size:24px; font-family:"Arial Black"; padding-top:3px; padding-bottom:4px;}
 .topNavBar .logo .rs{ margin-right:9px; color:#E6686A; }
 .topNavBar .logo .card{ color:#9A9DA2; }
 .banner{ height:515px; background-image: url(./img/rs-cover.jpg);  background-position:center center; background-size:cover; }

@@ -45,9 +45,9 @@
 	</div>
 	<main>
 		<div data-x id="siteAbout" class="userCard">
-			<div class="pictureAndText clearfix" style = "margin-top: -350px;">
+			<div class="pictureAndText clearfix" style="margin-top: -350px;">
 				<div class="picture">
-					<img src="./img/avatar.jpg" widtn=299 height=347 alt="头像">
+					<img src="./img/avatar.jpg" width="310px" height="347px" alt="头像">
 				</div>
 				<div class="text">												
 					<span class="welcome">Hello
@@ -99,155 +99,157 @@
 			技能：暂学升级中。。。。。。。。
 		</p>
 	</main>
-<section data-x id="siteSkills" class="skills">
-	<h2>技能</h2>
-	<ol class="clearfix">
-		<li>
-			<h3>HTML 5 &amp; css 3</h3>
-			<div class="progressBar">
-				<div class="progress" style="width:50%;"></div>
-			</div>
-		</li>
-		<li>
-			<h3>Javascript</h3>
-			<div class="progressBar">
-				<div class="progress" style="width:80%;"></div>
-			</div>
-		</li>
-		<li>
-		<h3>Vue.js</h3>
-			<div class="progressBar">
-				<div class="progress" style="width:80%;"></div>
-			</div>
-		</li>
-		<li>
-			<h3>jQuery</h3>
-			<div class="progressBar">
-				<div class="progress" style="width:60%;"></div>
-			</div>
-		</li>
-		<li>
-			<h3>Node.js</h3>
-			<div class="progressBar">
-				<div class="progress" style="width:60%;"></div>
-			</div>
-		</li>
-		<li>
-			<h3>React.js</h3>
-			<div class="progressBar">
-				<div class="progress"style="width:40%;"></div>
-			</div>
-		</li>			
-	</ol>
-</section>
-<section data-x id="siteWorks" class="portfolio">
-	<h2>个人作品集</h2>
-	<nav>
-		<ol>
-			<li id="portfolio1">所有</li>
-			<li id="portfolio2">框架</li>
-			<li id="portfolio3">原生 JS &amp; css</li>
+	<section data-x id="siteSkills" class="skills">
+		<h2>技能</h2>
+		<ol class="clearfix">
+			<li>
+				<h3>HTML 5 &amp; css 3</h3>
+				<div class="progressBar">
+					<div class="progress" style="width:50%;"></div>
+				</div>
+			</li>
+			<li>
+				<h3>Javascript</h3>
+				<div class="progressBar">
+					<div class="progress" style="width:80%;"></div>
+				</div>
+			</li>
+			<li>
+			<h3>Vue.js</h3>
+				<div class="progressBar">
+					<div class="progress" style="width:80%;"></div>
+				</div>
+			</li>
+			<li>
+				<h3>jQuery</h3>
+				<div class="progressBar">
+					<div class="progress" style="width:60%;"></div>
+				</div>
+			</li>
+			<li>
+				<h3>Node.js</h3>
+				<div class="progressBar">
+					<div class="progress" style="width:60%;"></div>
+				</div>
+			</li>
+			<li>
+				<h3>React.js</h3>
+				<div class="progressBar">
+					<div class="progress"style="width:40%;"></div>
+				</div>
+			</li>			
 		</ol>
-		<div id="portfolioBar" class="bar state-1">
-			<div class="barInner"></div>
+	</section>
+	<section data-x id="siteWorks" class="portfolio">
+		<h2>个人作品集</h2>
+		<nav>
+			<ol>
+				<li id="portfolio1">所有</li>
+				<li id="portfolio2">框架</li>
+				<li id="portfolio3">原生 JS &amp; css</li>
+			</ol>
+			<div id="portfolioBar" class="bar state-1">
+				<div class="barInner"></div>
+			</div>
+		</nav> 
+		<script>
+			portfolio1.onclick=function(){
+				portfolioBar.className = "bar state-1" 
+			}
+			portfolio2.onclick=function(){
+				portfolioBar.className = "bar state-2" 
+			}
+			portfolio3.onclick=function(){
+				portfolioBar.className = "bar state-3" 
+			}
+		</script>
+		<div class="works" style="height:597px;">
+			<div class="big" style="top:0; left:0;">
+				<img src="./img/1.jpg" alt="图片1">
+			</div>
+			<div class="small" style="top:0; left:645px;">
+				<img src="./img/2.jpg" alt="图片2">
+			</div>
+			<div class="small" style="top:298px; left:645px;">
+				<img src="./img/3.jpg" alt="图片3">
+			</div>
 		</div>
-	</nav> 
+	</section>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.2.0/Tween.min.js"></script>
 	<script>
-		portfolio1.onclick=function(){
-			portfolioBar.className = "bar state-1" 
-		}
-		portfolio2.onclick=function(){
-			portfolioBar.className = "bar state-2" 
-		}
-		portfolio3.onclick=function(){
-			portfolioBar.className = "bar state-3" 
-		}
-	</script>
-	<div class="works" style="height:597px;">
-		<div class="big" style="top:0; left:0;">
-			<img src="./img/1.jpg" alt="图片1">
-		</div>
-		<div class="small" style="top:0; left:645px;">
-			<img src="./img/2.jpg" alt="图片2">
-		</div>
-		<div class="small" style="top:298px; left:645px;">
-			<img src="./img/3.jpg" alt="图片3">
-		</div>
-	</div>
-</section>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.2.0/Tween.min.js"></script>
-<script>
-	//添加offset类
-	let specialTags = document.querySelectorAll('[data-x]')
-	for (let i=0;i<specialTags.length;i++){
-		specialTags[i].classList.add('offset')
-	}
-	findClosest()
-	window.onscroll = function(x){
-		if(window.scrollY > 0){   //窗口下滑
-			topNavBar.classList.add('sticky')
-		}else{
-			topNavBar.classList.remove('sticky') //改变class的名
+		//添加offset类
+		let specialTags = document.querySelectorAll('[data-x]')
+		for (let i=0;i<specialTags.length;i++){
+			specialTags[i].classList.add('offset')
 		}
 		findClosest()
-	}
-	function findClosest(){
-		let specialTags = document.querySelectorAll('[data-x]')  //获取页面标记的标签
-		let minIndex = 0
-		for (let i=1;i<specialTags.length;i++){
-			if(Math.abs(specialTags[i].offsetTop - window.scrollY) < Math.abs(specialTags[minIndex].offsetTop - window.scrollY)){
-				minIndex = i
+		window.onscroll = function(x){
+			if(window.scrollY > 0){   //窗口下滑
+				topNavBar.classList.add('sticky')
+			}else{
+				topNavBar.classList.remove('sticky') //改变class的名
+			}
+			findClosest()
+		}
+		function findClosest(){
+			let specialTags = document.querySelectorAll('[data-x]')  //获取页面标记的标签
+			let minIndex = 0
+			for (let i=1;i<specialTags.length;i++){
+				if(Math.abs(specialTags[i].offsetTop - window.scrollY) < Math.abs(specialTags[minIndex].offsetTop - window.scrollY)){
+					minIndex = i
+				} 
+			}
+			//minIndex 这里是离窗口最近的元素
+			specialTags[minIndex].classList.remove('offset')
+			let id = specialTags[minIndex].id
+			let a = document.querySelector('a[href="#'+ id +'"]')
+			let li = a . parentNode
+			let brothersAndme = li.parentNode.children
+			for (let i=0;i<brothersAndme.length;i++){
+				brothersAndme[i].classList.remove('highlight')
+			} 
+			li.classList.add('highlight')
+		}
+
+		
+		let liTags = document.querySelectorAll('nav.menu > ul >li')
+		for(let i=0; i<liTags.length;i++){
+			liTags[i].onmouseenter = function(x){  
+				x.currentTarget.classList.add('active')
+			}
+		liTags[i].onmouseleave = function(x){ 
+				x.currentTarget.classList.remove('active')
+			}
+		}
+
+		let aTags = document.querySelectorAll('nav.menu > ul > li > a')
+		function animate(time){
+			requestAnimationFrame(animate);
+			TWEEN.update(time);   //求帧率
+		}
+		requestAnimationFrame(animate);
+		for(let i=0; i<aTags.length; i++){
+			aTags[i].onclick = function(x){
+				x.preventDefault()  //阻止默认动作
+				let a = x.currentTarget  //获取用户点击的a标签
+				let href = a.getAttribute('href')  //获取a标签上的href
+				let element = document.querySelector(href) //根据代码得到元素
+				let top = element.offsetTop  //得到这个元素上面的距离
+				let currentTop = window.scrollY  //求出当前的距离
+				let targetTop = top - 80   //目标的top
+				let s = targetTop - currentTop  //总的距离
+				var coords = {y: currentTop};  //起始位置
+				var t = Math.abs((s/100)*300)  //总的时间
+				if(t>500){ t = 500 }
+				var tween = new TWEEN.Tween(coords)  //初始位置
+				.to({ y:targetTop},t)  // 结束位置 和 时间
+				.easing(TWEEN.Easing.Quadratic.InOut)  //缓动的类型
+				.onUpdate(function(){
+					window.scrollTo(0,coords.y) //如何更新页面
+				})
+				.start();   //开始缓动
 			} 
 		}
-		//minIndex 这里是离窗口最近的元素
-		specialTags[minIndex].classList.remove('offset')
-		let id = specialTags[minIndex].id
-		let a = document.querySelector('a[href="#'+ id +'"]')
-		let li = a . parentNode
-		let brothersAndme = li.parentNode.children
-		for (let i=0;i<brothersAndme.length;i++){
-			brothersAndme[i].classList.remove('highlight')
-		} 
-		li.classList.add('highlight')
-	}
-	let liTags = document.querySelectorAll('nav.menu > ul >li')
-	for(let i=0; i<liTags.length;i++){
-		liTags[i].onmouseenter = function(x){  
-			x.currentTarget.classList.add('active')
-		}
-	liTags[i].onmouseleave = function(x){ 
-			x.currentTarget.classList.remove('active')
-		}
-	}
-
-	let aTags = document.querySelectorAll('nav.menu > ul > li > a')
-	function animate(time){
-		requestAnimationFrame(animate);
-		TWEEN.update(time);   //求帧率
-	}
-	requestAnimationFrame(animate);
-	for(let i=0; i<aTags.length; i++){
-		aTags[i].onclick = function(x){
-			x.preventDefault()  //阻止默认动作
-			let a = x.currentTarget  //获取用户点击的a标签
-			let href = a.getAttribute('href')  //获取a标签上的href
-			let element = document.querySelector(href) //根据代码得到元素
-			let top = element.offsetTop  //得到这个元素上面的距离
-			let currentTop = window.scrollY  //求出当前的距离
-			let targetTop = top - 80   //目标的top
-			let s = targetTop - currentTop  //总的距离
-			var coords = {y: currentTop};  //起始位置
-			var t = Math.abs((s/100)*300)  //总的时间
-			if(t>500){ t = 500 }
-			var tween = new TWEEN.Tween(coords)  //初始位置
-			.to({ y:targetTop},t)  // 结束位置 和 时间
-			.easing(TWEEN.Easing.Quadratic.InOut)  //缓动的类型
-			.onUpdate(function(){
-				window.scrollTo(0,coords.y) //如何更新页面
-			})
-			.start();   //开始缓动
-		} 
-	}
-</script>
+	</script>
 </body>
 </html>
