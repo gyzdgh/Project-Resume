@@ -1,0 +1,62 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+ul,li{
+    list-style: none;
+}
+h1{
+    text-align: center;
+    font-size: 42px;
+    color:#444444;
+    font-weight: normal;
+    font-family: "Myriad Pro",Arial,Helvetica,sans-serif;
+    padding:20px;
+}
+b{
+    font-weight: bold;
+}
+.container{
+    border:1px solid rgba(0,0,0,.3);
+    width:920px;
+    overflow: hidden;
+    margin:15px auto;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow: 0 0 3px #AAAAAA;
+}
+.images{
+    display:flex;
+    align-items:flex-start;
+    transition:all 0.3s;
+    cursor: pointer;
+}
+.buttons{
+    cursor: pointer;
+}
+.buttons > ul{
+    display: flex;
+    justify-content: center;
+    background:url(./images/panel.jpg)
+    
+}
+.buttons > ul > li{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:58px;
+    height:44px;
+}
+.buttons > ul > li:nth-child(odd){
+    border-left: 2px solid rgba(0, 0, 0, .1);
+    border-right: 2px solid rgba(0, 0, 0, .1);    
+}
+.buttons > ul > li:last-child{
+    border-right: 2px solid rgba(0, 0, 0, .1);    
+}
+.buttons > ul > li.active{
+    background: url("./images/active_bg.png");
+    background-position: center center;
+    border-color: transparent; 
+}
