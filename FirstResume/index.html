@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>GYZ个人简历</title>
-	<link rel="stylesheet" href="./main.css">	
+	<title>GYZ个人简历</title>	
 	<link rel="stylesheet" href="./loading.css">
 	<script src="http://at.alicdn.com/t/font_620063_rq7tony3jcq5mi.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css">
+	<link rel="stylesheet" href="./main.css">
 	<style type="text/css">
 		.icon { width: 1em; height: 1em; vertical-align: -0.15em; fill: currentColor; overflow: hidden;}
 	</style>
@@ -142,7 +143,23 @@
 	</section>
 	<section data-x id="siteWorks" class="portfolio">
 		<h2>个人作品集</h2>
-		<nav>
+		<!-- Slider main container -->
+		<div class="swiper-container">
+			<!-- Additional required wrapper -->
+			<div class="swiper-wrapper">
+				<!-- Slides -->
+				<img src="./img/nav-page.jpg" class="swiper-slide">
+				<img  src="./img/canva.jpg" class="swiper-slide">
+				<img src="./img/apple-page.jpg"class="swiper-slide">
+			</div>
+			<!-- If we need pagination -->
+			<div class="swiper-pagination"></div>
+		</div>
+		<!-- If we need navigation buttons -->
+		<div class="swiper-button-prev"></div>
+		<div class="swiper-button-next"></div>
+		
+		<!-- <nav>
 			<ol>
 				<li id="portfolio1">所有</li>
 				<li id="portfolio2">框架</li>
@@ -173,9 +190,11 @@
 			<div class="small" style="top:298px; left:645px;">
 				<img src="./img/3.jpg" alt="图片3">
 			</div>
-		</div>
+		</div> -->
 	</section>
+	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.2.0/Tween.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
 	<script>
 		//添加offset类
 		let specialTags = document.querySelectorAll('[data-x]')
@@ -250,6 +269,23 @@
 				.start();   //开始缓动
 			} 
 		}
+	</script>
+	<script>
+		var mySwiper = new Swiper('.swiper-container', {
+			// Optional parameters
+			loop: true,
+
+			// If we need pagination
+			pagination: {
+				el: '.swiper-pagination',
+			},
+
+			// Navigation arrows
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			},
+		})
 	</script>
 </body>
 </html>
