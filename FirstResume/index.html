@@ -6,9 +6,6 @@
 	<script src="http://at.alicdn.com/t/font_620063_rq7tony3jcq5mi.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css">
 	<link rel="stylesheet" href="./main.css">
-	<style type="text/css">
-		.icon { width: 1em; height: 1em; vertical-align: -0.15em; fill: currentColor; overflow: hidden;}
-	</style>
 </head>
 <body>
 	<div id="topNavBar" class="topNavBar"> 
@@ -143,21 +140,24 @@
 	</section>
 	<section data-x id="siteWorks" class="portfolio">
 		<h2>个人作品集</h2>
-		<!-- Slider main container -->
-		<div class="swiper-container">
-			<!-- Additional required wrapper -->
-			<div class="swiper-wrapper">
-				<!-- Slides -->
-				<img src="./img/nav-page.jpg" class="swiper-slide">
-				<img  src="./img/canva.jpg" class="swiper-slide">
-				<img src="./img/apple-page.jpg"class="swiper-slide">
+		<div id="mySlides">
+			<!-- Slider main container -->
+			<div class="swiper-container">
+				<!-- Additional required wrapper -->
+				<div class="swiper-wrapper">
+					<!-- Slides -->
+					<img src="./img/nav-page.jpg" class="swiper-slide">
+					<img src="./img/canva.jpg" class="swiper-slide">
+					<img src="./img/apple-page.jpg" class="swiper-slide">
+				</div>
+				<!-- If we need pagination -->
+				<div class="swiper-pagination"></div>
 			</div>
-			<!-- If we need pagination -->
-			<div class="swiper-pagination"></div>
+			<!-- If we need navigation buttons -->
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div>
+		
 		</div>
-		<!-- If we need navigation buttons -->
-		<div class="swiper-button-prev"></div>
-		<div class="swiper-button-next"></div>
 		
 		<!-- <nav>
 			<ol>
@@ -195,97 +195,9 @@
 	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.2.0/Tween.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
-	<script>
-		//添加offset类
-		let specialTags = document.querySelectorAll('[data-x]')
-		for (let i=0;i<specialTags.length;i++){
-			specialTags[i].classList.add('offset')
-		}
-		findClosest()
-		window.onscroll = function(x){
-			if(window.scrollY > 0){   //窗口下滑
-				topNavBar.classList.add('sticky')
-			}else{
-				topNavBar.classList.remove('sticky') //改变class的名
-			}
-			findClosest()
-		}
-		function findClosest(){
-			let specialTags = document.querySelectorAll('[data-x]')  //获取页面标记的标签
-			let minIndex = 0
-			for (let i=1;i<specialTags.length;i++){
-				if(Math.abs(specialTags[i].offsetTop - window.scrollY) < Math.abs(specialTags[minIndex].offsetTop - window.scrollY)){
-					minIndex = i
-				} 
-			}
-			//minIndex 这里是离窗口最近的元素
-			specialTags[minIndex].classList.remove('offset')
-			let id = specialTags[minIndex].id
-			let a = document.querySelector('a[href="#'+ id +'"]')
-			let li = a . parentNode
-			let brothersAndme = li.parentNode.children
-			for (let i=0;i<brothersAndme.length;i++){
-				brothersAndme[i].classList.remove('highlight')
-			} 
-			li.classList.add('highlight')
-		}
-
-		
-		let liTags = document.querySelectorAll('nav.menu > ul >li')
-		for(let i=0; i<liTags.length;i++){
-			liTags[i].onmouseenter = function(x){  
-				x.currentTarget.classList.add('active')
-			}
-		liTags[i].onmouseleave = function(x){ 
-				x.currentTarget.classList.remove('active')
-			}
-		}
-
-		let aTags = document.querySelectorAll('nav.menu > ul > li > a')
-		function animate(time){
-			requestAnimationFrame(animate);
-			TWEEN.update(time);   //求帧率
-		}
-		requestAnimationFrame(animate);
-		for(let i=0; i<aTags.length; i++){
-			aTags[i].onclick = function(x){
-				x.preventDefault()  //阻止默认动作
-				let a = x.currentTarget  //获取用户点击的a标签
-				let href = a.getAttribute('href')  //获取a标签上的href
-				let element = document.querySelector(href) //根据代码得到元素
-				let top = element.offsetTop  //得到这个元素上面的距离
-				let currentTop = window.scrollY  //求出当前的距离
-				let targetTop = top - 80   //目标的top
-				let s = targetTop - currentTop  //总的距离
-				var coords = {y: currentTop};  //起始位置
-				var t = Math.abs((s/100)*300)  //总的时间
-				if(t>500){ t = 500 }
-				var tween = new TWEEN.Tween(coords)  //初始位置
-				.to({ y:targetTop},t)  // 结束位置 和 时间
-				.easing(TWEEN.Easing.Quadratic.InOut)  //缓动的类型
-				.onUpdate(function(){
-					window.scrollTo(0,coords.y) //如何更新页面
-				})
-				.start();   //开始缓动
-			} 
-		}
-	</script>
-	<script>
-		var mySwiper = new Swiper('.swiper-container', {
-			// Optional parameters
-			loop: true,
-
-			// If we need pagination
-			pagination: {
-				el: '.swiper-pagination',
-			},
-
-			// Navigation arrows
-			navigation: {
-				nextEl: '.swiper-button-next',
-				prevEl: '.swiper-button-prev',
-			},
-		})
-	</script>
+	<script src="./js/init-swiper.js"></script>
+	<script src="./js/auto-slide-up.js"></script>
+	<script src="./js//sticky-topbar.js"></script>
+	<script src="./js/smoothly-navigation.js"></script>
 </body>
 </html>
