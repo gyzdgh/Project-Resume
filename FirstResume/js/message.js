@@ -19,7 +19,7 @@
             //在表中创建新的一行数据
             //并保存
             var message = new Message();
-            message.save({      //Promise对象
+            return message.save({      //Promise对象
                 'name': name,
                 'content': content
             })
@@ -45,7 +45,6 @@
             this.loadMessages()
             this.bindEvents()
         },
-
         loadMessages: function () {
             this.model.fetch().then(
                 (messages) => {
@@ -55,7 +54,7 @@
                         //在页面中生成li标签
                         let li = document.createElement('li')
                         //li标签的内容设置为输入的数据内容
-                        li.innerHTML = `${item.name}: ${item.content}`
+                        li.innerText = `${item.name}: ${item.content}`
                         //在页面中根据id找到生成的位置标签
                         // let messageList = document.querySelector('#messageList')
                         //生成一个li标签
@@ -65,16 +64,16 @@
             )
         },
         bindEvents: function () {
+            var that = this;
             //创建数据库信息
             // let myForm = document.querySelector('#postMessageForm')
             //监听表单的submit事件
             this.form.addEventListener('submit', function (e) {
                 //阻止默认事件
                 e.preventDefault()
-                console.log(1)
-                this.saveMessage()
-                console.log(2)
+                that.saveMessage()
             })
+            
         },
         saveMessage: function () {
             let myForm = this.form
@@ -90,11 +89,14 @@
                 let messageList = document.querySelector('#messageList')
                 //生成一个li标签
                 messageList.appendChild(li)
+                //设置input的值为空
                 myForm.querySelector('input[name=content]').value = ''
+                myForm.querySelector('input[name=name]').value = ''
             })
         }
     }
     controller.init(view, model)
 
 }.call()
+
 
