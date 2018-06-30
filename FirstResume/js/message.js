@@ -64,16 +64,17 @@
             )
         },
         bindEvents: function () {
-            var that = this;
+            var a = this;
             //创建数据库信息
             // let myForm = document.querySelector('#postMessageForm')
             //监听表单的submit事件
             this.form.addEventListener('submit', function (e) {
                 //阻止默认事件
                 e.preventDefault()
-                that.saveMessage()
+                if(a.form.querySelector('input[name=content]').value.length > 0){
+                    a.saveMessage()
+                }
             })
-            
         },
         saveMessage: function () {
             let myForm = this.form

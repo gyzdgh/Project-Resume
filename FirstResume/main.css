@@ -80,10 +80,10 @@ section.portfolio .swiper-container {width: 668px; height: 501px;}
 
 section.message > ol{max-width: 700px; margin:0 auto; border-top:1px solid grey; margin-top:30px;}
 section.message > ol > li{padding:15px;border-bottom: 1px solid grey;}
-.m-name,.m-content{outline-style: none; width:300px; height:30px; padding-left:8px; border-radius: 20px; border:0;}
-.m-content{margin-top:20px;}
-.m-submit{width: 50px; height:25px; border-radius: 20px; margin-left: 20px;}
-
+.m-name,.m-content{outline-style: none; height:30px; padding-left:8px; border-radius: 20px; border:0;}
+.m-name{width:150px;}
+.m-content{margin-top:20px;width:300px;}
+.m-submit{width: 50px; height:25px; border-radius: 20px; margin-left: 20px;outline-style: none;cursor: pointer;}
 
 
 /* section.portfolio > nav { text-align:center; display:inline-block; vertical-align: top; margin-top:30px;}
