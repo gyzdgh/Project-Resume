@@ -1,49 +1,15 @@
 !function () {
-    var model = {
-        //获取数据
-        init: function () {
-            //初始化
-            var APP_ID = 'sJHeF1RwlFz0Xw82oUj4x7GG-gzGzoHsz';
-            var APP_KEY = 'OYCzA5DY3no5tsgYeNu7W4au';
-            AV.init({ appId: APP_ID, appKey: APP_KEY })
-        },
-        fetch: function () {
-            var query = new AV.Query('Message');
-            //找到所有的数据
-            return query.find()     //Promise对象
-        },
-        //创建数据
-        save: function (name, content) {
-            //在数据库创建一个Message表
-            var Message = AV.Object.extend('Message');
-            //在表中创建新的一行数据
-            //并保存
-            var message = new Message();
-            return message.save({      //Promise对象
-                'name': name,
-                'content': content
-            })
-        }
-    }
-
+    var model = Model({ resourceName: 'Message' })
     //展示内容
-    var view = document.querySelector('section.message')
+    var view = View('section.message')
 
-    //控制器
-    var controller = {
-        view: null,
-        model: null,
+    var controller = Controller({
         messageList: null,
-        //初始化方法
-        init: function (view, model) {
-            this.view = view
-            this.model = model
+        form: null,
+        init: function (view, controller) {
             this.messageList = view.querySelector('#messageList')
             this.form = view.querySelector('form')
-            //三个方法
-            this.model.init()
             this.loadMessages()
-            this.bindEvents()
         },
         loadMessages: function () {
             this.model.fetch().then(
@@ -64,15 +30,14 @@
             )
         },
         bindEvents: function () {
-            var a = this;
             //创建数据库信息
             // let myForm = document.querySelector('#postMessageForm')
             //监听表单的submit事件
-            this.form.addEventListener('submit', function (e) {
+            this.form.addEventListener('submit', (e) => {
                 //阻止默认事件
                 e.preventDefault()
-                if(a.form.querySelector('input[name=content]').value.length > 0){
-                    a.saveMessage()
+                if (this.form.querySelector('input[name=content]').value.length > 0) {
+                    this.saveMessage()
                 }
             })
         },
@@ -81,7 +46,9 @@
             //获取内容等于用户输入的内容
             let content = myForm.querySelector('input[name=content]').value;
             let name = myForm.querySelector('input[name=name]').value;
-            this.model.save(name, content).then(function (object) {
+            this.model.save({
+                'name': name, 'content': content
+            }).then(function (object) {
                 //更新页面留言
                 let li = document.createElement('li')
                 //li标签的内容设置为输入的数据内容
@@ -95,7 +62,8 @@
                 myForm.querySelector('input[name=name]').value = ''
             })
         }
-    }
+    })
+
     controller.init(view, model)
 
 }.call()

@@ -1,5 +1,5 @@
 !function(){
-    var view = document.querySelector('#mySlides')
+    var view = View('#mySlides')
     var controller = {
         view : null,
         swiper : null,
@@ -24,7 +24,7 @@
         },
         initSwiper : function(){
             this.swiper = new Swiper(
-                view.querySelector('.swiper-container'), 
+                this.view.querySelector('.swiper-container'), 
                 this.swiperOptions
             )
         }
